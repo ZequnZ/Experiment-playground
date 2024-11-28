@@ -1,0 +1,52 @@
+[tool.poetry]
+name = "experiment-playground"
+version = "0.1.0"
+description = ""
+authors = ["ZequnZ <zequn.zhou007@gmail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+tensorflow = "^2.18.0"
+torch = "^2.5.1"
+matplotlib = "^3.9.2"
+pandas = "^2.2.3"
+scikit-learn = "^1.5.2"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.4.1"
+ruff = "^0"
+pytest = "^8.3.1"
+pytest-cov = "^4.1.0"
+pre-commit = "^3.3.3"
+jupyterlab = "^4.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# mypy global options:
+# See https://mypy.readthedocs.io/en/stable/config_file.html#example-pyproject-toml
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+
+[[tool.mypy.overrides]]
+module = [
+]
+#ignore_missing_imports = true
+
+# pytest config
+[tool.pytest.ini_options]
+# Set the root folder here
+pythonpath = "src"
+addopts = [
+    "--import-mode=importlib",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "test_mark: mark test for testing purposes (deselect with '-m \"not test_mark\"')"
+]
